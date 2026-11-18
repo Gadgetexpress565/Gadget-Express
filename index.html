@@ -38,7 +38,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     h2{font: bold 30px Georgia,serif;margin:0;color:var(--green)}.sub{color:var(--muted);font-size:14px;margin:7px 0 0}
     .filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #d9ded8;background:#fff;border-radius:20px;padding:8px 13px;font-size:12px;color:#4b5b52}.filter.active{background:var(--green);color:#fff;border-color:var(--green)}
     .products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-    .product.flash{outline:3px solid #08bdf5;outline-offset:3px;transition:outline .3s}
+    .product.flash{outline:3px solid var(--gold);outline-offset:3px;transition:outline .3s}
     .product{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column}
     .product img{width:100%;height:190px;object-fit:cover;background:#e9ece7}
     .pbody{padding:14px;display:flex;flex-direction:column;flex:1}.tag{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a713e;font-weight:bold}
@@ -82,6 +82,38 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     .ord{border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:8px;font-size:12px;line-height:1.5}.ord small{color:var(--muted)}
     .selall{display:flex;align-items:center;gap:10px;padding:8px 0 12px;font-size:13px;font-weight:bold;border-bottom:1px solid var(--line)}
     .selbox{width:20px;height:20px;accent-color:var(--green);flex:0 0 auto;margin:2px 0 0}.cart-item.off{opacity:.5}.cart-item .info{display:flex;gap:10px;flex:1}
+
+    .brands{display:none;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 16px}.brands b{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+    .brandbtn{border:1px solid var(--line);background:#fff;border-radius:20px;padding:8px 15px;font-size:13px;color:#334155;transition:transform .2s,background .2s,color .2s,box-shadow .2s}.brandbtn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(var(--rgb),.15)}.brandbtn.active{background:var(--green2);color:#fff;border-color:var(--green2)}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    @keyframes shine{from{background-position:200% 0}to{background-position:-100% 0}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .hero-inner{position:relative}.hero-inner::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.14) 50%,transparent 70%);background-size:250% 100%;animation:shine 7s linear infinite}
+    .hero-copy{position:relative;z-index:1}.hero-copy h1{animation:rise .8s ease both}.hero-copy p,.hero-copy .eyebrow{animation:rise .9s .15s ease both}.hero-copy .primary{animation:rise 1s .3s ease both,bob 3s 1.3s ease-in-out infinite}
+    .product{animation:rise .5s ease both;transition:transform .25s,box-shadow .25s,border-color .25s}.product:nth-child(4n+2){animation-delay:.07s}.product:nth-child(4n+3){animation-delay:.14s}.product:nth-child(4n+4){animation-delay:.21s}
+    .product:hover{transform:translateY(-7px);box-shadow:0 16px 32px rgba(var(--rgb),.2);border-color:var(--soft)}.product img{transition:transform .5s}.product:hover img{transform:scale(1.08)}
+    .add,.primary,.cartbtn,.filter,.checkout{transition:transform .2s,box-shadow .2s,background .2s,color .2s}.add:hover,.primary:hover,.cartbtn:hover,.checkout:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 18px rgba(var(--rgb),.3)}
+    .add:active,.primary:active,.cartbtn:active,.filter:active,.brandbtn:active{transform:scale(.95)}.filter:hover{transform:translateY(-2px);border-color:var(--green2)}
+    .benefit{transition:transform .25s,box-shadow .25s}.benefit:hover{transform:translateY(-5px);box-shadow:0 10px 22px rgba(var(--rgb),.15)}
+    .navlinks a{position:relative}.navlinks a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--green2);transition:width .25s}.navlinks a:hover::after{width:100%}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+:root{--rgb:7,85,184;--soft:#9cc3f0;--hero:linear-gradient(120deg,#061a38,#0755b8);--deco:""}
+    body[data-cat="Home appliances"]{--green:#0b3d3a;--green2:#0f9d8a;--gold:#5eead4;--cream:#effaf7;--line:#cfe8e2;--soft:#8fd9cb;--rgb:15,157,138;--hero:linear-gradient(120deg,#0b3d3a,#0f9d8a);--deco:"🏠 ✨ 🍳"}
+    body[data-cat="Home comfort/Decorations"]{--green:#4a2c1d;--green2:#c2703d;--gold:#f2b880;--cream:#fbf3ea;--line:#ecd9c6;--soft:#e8b88d;--rgb:194,112,61;--hero:linear-gradient(120deg,#4a2c1d,#c2703d);--deco:"🛋️ 🕯️ 🌿"}
+    body[data-cat="Vehicle accessories"]{--green:#111111;--green2:#e11d2e;--gold:#ff6a3d;--cream:#f4f4f5;--line:#dcdcde;--soft:#f4a3a8;--rgb:225,29,46;--hero:linear-gradient(120deg,#111,#7f1018 55%,#e11d2e);--deco:"🏍️ 🔧 🏁"}
+    body[data-cat="Electronics"]{--green:#061a38;--green2:#0755b8;--gold:#08bdf5;--cream:#f3f7fc;--line:#dbe4f0;--soft:#9cc3f0;--rgb:7,85,184;--hero:linear-gradient(120deg,#061a38,#0755b8);--deco:"📱 🎧 ⚡"}
+    body[data-cat="Clothing/Wearables"]{--green:#1c1917;--green2:#b45309;--gold:#fbbf24;--cream:#fbf7f0;--line:#eadfce;--soft:#e8b86a;--rgb:180,83,9;--hero:linear-gradient(120deg,#1c1917,#78350f 55%,#b45309);--deco:"👕 🧢 🧤"}
+    body[data-cat="Solar"]{--green:#4a2f00;--green2:#e08a00;--gold:#ffd23f;--cream:#fff9e6;--line:#f3e3b0;--soft:#f7cf6f;--rgb:224,138,0;--hero:linear-gradient(120deg,#7a4a00,#e08a00 60%,#ffd23f);--deco:"☀️ 🔋 💡"}
+    body[data-cat="Beauty and skincare"]{--green:#7a3b2e;--green2:#e8896b;--gold:#ffc9b3;--cream:#fff4ef;--line:#f6dccf;--soft:#f3b9a3;--rgb:232,137,107;--hero:linear-gradient(120deg,#7a3b2e,#e8896b 70%,#ffc9b3);--deco:"💄 🧴 ✨"}
+    body[data-cat="Perfumes"]{--green:#4a1d6b;--green2:#d946a8;--gold:#f9a8d4;--cream:#fdf2f8;--line:#f3d5e8;--soft:#f0abfc;--rgb:217,70,168;--hero:radial-gradient(circle at 82% 18%,rgba(249,168,212,.55),transparent 45%),linear-gradient(120deg,#4a1d6b,#a21caf 55%,#ec4899);--deco:"🌸 💜 ✨"}
+    body[data-cat="Motorcycle helmets"]{--green:#1f2937;--green2:#65a30d;--gold:#bef264;--cream:#f3f6ee;--line:#dbe3cf;--soft:#bde08a;--rgb:101,163,13;--hero:linear-gradient(120deg,#1f2937,#3f6212 60%,#65a30d);--deco:"🪖 🏍️ 🛡️"}
+    body[data-cat="420 products"]{--green:#052e16;--green2:#16a34a;--gold:#86efac;--cream:#effcf3;--line:#cdeed8;--soft:#86d9a3;--rgb:22,163,74;--hero:linear-gradient(120deg,#052e16,#15803d);--deco:"🌿 💨 🍃"}
+    body[data-cat="Adult store"]{--green:#1a0a12;--green2:#be123c;--gold:#fb7185;--cream:#fdf2f4;--line:#f4d3d9;--soft:#f19aab;--rgb:190,18,60;--hero:linear-gradient(120deg,#1a0a12,#881337 60%,#be123c);--deco:"🔥 💋 🖤"}
+    body,.topbar,header,footer,.hero-inner,.about{transition:background .5s,color .5s}
+    body .hero-inner{background:var(--hero)}.hero-inner::before{content:var(--deco);position:absolute;right:34px;top:50%;margin-top:-40px;font-size:60px;letter-spacing:14px;white-space:nowrap;animation:bob 4s ease-in-out infinite;pointer-events:none;opacity:.95}
+    .tag{color:var(--green2)}.about{background:rgba(var(--rgb),.09)}.eyebrow{color:var(--gold)}
+    @media(max-width:850px){.hero-inner::before{font-size:34px;right:16px;top:22px;margin-top:0;letter-spacing:8px;opacity:.4}}
   </style>
 </head>
 <body>
@@ -107,8 +139,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     <section class="section" id="shop">
       <div class="section-head"><div><h2>Home Appliances</h2><p class="sub">Browse our home appliances and place your order directly on WhatsApp.</p></div>
-        <div class="filters"><button class="filter active" onclick="filterProducts('Home appliances',this)">Home Appliances</button><button class="filter" onclick="filterProducts('Home comfort/Decorations',this)">Home Comfort/Decorations</button><button class="filter" onclick="filterProducts('Vehicle accessories',this)">Vehicle Accessories</button><button class="filter" onclick="filterProducts('Electronics',this)">Electronics</button><button class="filter" onclick="filterProducts('Clothing/Wearables',this)">Clothing/Wearables</button><button class="filter" onclick="filterProducts('Solar',this)">Solar</button><button class="filter" onclick="filterProducts('Beauty and skincare',this)">Beauty &amp; Skincare</button><button class="filter" onclick="filterProducts('Motorcycle helmets',this)">Motorcycle Helmets</button><button class="filter" onclick="filterProducts('420 products',this)">420 Products</button><button class="filter" onclick="filterProducts('Adult store',this)">Adult Store</button></div>
+        <div class="filters"><button class="filter active" onclick="filterProducts('Home appliances',this)">Home Appliances</button><button class="filter" onclick="filterProducts('Home comfort/Decorations',this)">Home Comfort/Decorations</button><button class="filter" onclick="filterProducts('Vehicle accessories',this)">Vehicle Accessories</button><button class="filter" onclick="filterProducts('Electronics',this)">Electronics</button><button class="filter" onclick="filterProducts('Clothing/Wearables',this)">Clothing/Wearables</button><button class="filter" onclick="filterProducts('Solar',this)">Solar</button><button class="filter" onclick="filterProducts('Beauty and skincare',this)">Beauty &amp; Skincare</button><button class="filter" onclick="filterProducts('Perfumes',this)">Perfumes</button><button class="filter" onclick="filterProducts('Motorcycle helmets',this)">Motorcycle Helmets</button><button class="filter" onclick="filterProducts('420 products',this)">420 Products</button><button class="filter" onclick="filterProducts('Adult store',this)">Adult Store</button></div>
       </div>
+      <div class="brands" id="brandBar"><b>Brand:</b><button class="brandbtn active" onclick="setBrand('All',this)">All</button><button class="brandbtn" onclick="setBrand('Yara',this)">Yara</button><button class="brandbtn" onclick="setBrand('Romantic Soul',this)">Romantic Soul</button><button class="brandbtn" onclick="setBrand('Xolleboss',this)">Xolleboss</button><button class="brandbtn" onclick="setBrand('Luenco',this)">Luenco</button></div>
       <div class="search"><input type="search" id="searchBox" placeholder="🔍 Search all products…" oninput="searchProducts(this.value)" aria-label="Search products"></div>
       <div class="products" id="products"></div>
     </section>
@@ -271,10 +304,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   const WHATSAPP_NUMBER = "27730566895";
   let cart = {}, unsel = {};
   const money = n => "R" + n.toFixed(2);
-  let currentCat="Home appliances";
+  let currentCat="Home appliances",currentBrand="All";
   function renderProducts(category="Home appliances",list){
-    currentCat=category;list=list||products.filter(p=>p.category===category||(p.alsoIn||[]).includes(category));
-    document.getElementById("products").innerHTML = (list.length?list:[null]).map(p=>!p?'<div class="noresult">No products found. Try another word, or suggest it below!</div>':`
+    currentCat=category;const own=!list;list=list||products.filter(p=>(p.category===category||(p.alsoIn||[]).includes(category))&&(category!=="Perfumes"||currentBrand==="All"||p.brand===currentBrand));
+    document.getElementById("products").innerHTML = (list.length?list:[null]).map(p=>!p?'<div class="noresult">'+(own&&category==="Perfumes"?"No perfumes from this brand yet. Message us on WhatsApp and we will get it for you!":"No products found. Try another word, or suggest it below!")+'</div>':`
       <article class="product" id="p${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="pbody">
       <div class="tag">${p.tag}</div><h3>${p.name}</h3><div class="desc">${p.desc}</div>
       <div class="price-row"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">＋ Add</button></div></div></article>`).join("");
@@ -285,13 +318,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     h.textContent="Search results";sub.textContent="Showing matches from all categories for “"+q.replace(/</g,"&lt;")+"”.";
     renderProducts(currentCat,products.filter(p=>(ageOK||p.category!=="Adult store")&&(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q)));
   }
-  const CATS={"Home appliances":["Home Appliances","Browse our home appliances and place your order directly on WhatsApp."],"Home comfort/Decorations":["Home Comfort/Decorations","Browse our home comfort and decoration products and place your order directly on WhatsApp."],"Vehicle accessories":["Vehicle Accessories","Browse motorcycle and vehicle accessories and place your order directly on WhatsApp."],"Electronics":["Electronics","Browse our electronics and place your order directly on WhatsApp."],"Clothing/Wearables":["Clothing/Wearables","Browse our clothing and wearables and place your order directly on WhatsApp."],"Solar":["Solar","Browse our solar products and place your order directly on WhatsApp."],"Beauty and skincare":["Beauty & Skincare","Browse our beauty and skincare products and place your order directly on WhatsApp."],"Motorcycle helmets":["Motorcycle Helmets","Browse our motorcycle helmets and place your order directly on WhatsApp."],"420 products":["420 Products","Browse our 420 products and place your order directly on WhatsApp."],"Adult store":["Adult Store","18+ only. Browse our adult products and place your order directly on WhatsApp."]};
+  const CATS={"Home appliances":["Home Appliances","Browse our home appliances and place your order directly on WhatsApp."],"Home comfort/Decorations":["Home Comfort/Decorations","Browse our home comfort and decoration products and place your order directly on WhatsApp."],"Vehicle accessories":["Vehicle Accessories","Browse motorcycle and vehicle accessories and place your order directly on WhatsApp."],"Electronics":["Electronics","Browse our electronics and place your order directly on WhatsApp."],"Clothing/Wearables":["Clothing/Wearables","Browse our clothing and wearables and place your order directly on WhatsApp."],"Solar":["Solar","Browse our solar products and place your order directly on WhatsApp."],"Perfumes":["Perfumes","Pick a brand below and order your favourite fragrance on WhatsApp."],"Beauty and skincare":["Beauty & Skincare","Browse our beauty and skincare products and place your order directly on WhatsApp."],"Motorcycle helmets":["Motorcycle Helmets","Browse our motorcycle helmets and place your order directly on WhatsApp."],"420 products":["420 Products","Browse our 420 products and place your order directly on WhatsApp."],"Adult store":["Adult Store","18+ only. Browse our adult products and place your order directly on WhatsApp."]};
   let ageOK=false,pendingAdult=null,pendingProduct=null;
   function ageYes(){ageOK=true;document.getElementById("ageGate").classList.remove("show");if(pendingAdult){const b=pendingAdult;pendingAdult=null;filterProducts("Adult store",b);if(pendingProduct){const i=pendingProduct;pendingProduct=null;setTimeout(()=>showProduct(i),150)}}}
   function ageNo(){pendingAdult=null;pendingProduct=null;document.getElementById("ageGate").classList.remove("show")}
   function filterProducts(cat,btn){
     if(cat==="Adult store"&&!ageOK){pendingAdult=btn;document.getElementById("ageGate").classList.add("show");return}
-    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("searchBox").value="";document.querySelector("#shop h2").textContent=CATS[cat][0];document.querySelector("#shop .sub").textContent=CATS[cat][1];renderProducts(cat)}
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("searchBox").value="";currentBrand="All";document.querySelectorAll(".brandbtn").forEach((b,i)=>b.classList.toggle("active",i===0));document.getElementById("brandBar").style.display=cat==="Perfumes"?"flex":"none";document.querySelector("#shop h2").textContent=CATS[cat][0];document.querySelector("#shop .sub").textContent=CATS[cat][1];applyTheme(cat);renderProducts(cat)}
+  function setBrand(b,btn){currentBrand=b;document.querySelectorAll(".brandbtn").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.getElementById("searchBox").value="";renderProducts("Perfumes")}
   function addToCart(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()}
   function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0){delete cart[id];delete unsel[id]}updateCart()}
   function toggleSel(id){if(unsel[id])delete unsel[id];else unsel[id]=1;updateCart()}
@@ -420,6 +454,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   }
   window.addEventListener("hashchange",openFromHash);
   renderProducts("Home appliances");renderReviews();updateCart();refreshAcctUI();prefillNames();openFromHash();
+</script>
+<script>
+var THEME={"Home appliances": ["HOME ESSENTIALS", "Make your home work for you.", "Handy appliances that save you time every day. Order directly on WhatsApp."], "Home comfort/Decorations": ["COSY & STYLISH", "Comfort that feels like home.", "Inflatable sofas, décor and cosy finds for every room."], "Vehicle accessories": ["RIDE READY", "Gear up for the road.", "Motorcycle and vehicle accessories built for riders and drivers."], "Electronics": ["SMART TECH", "Tech that keeps up with you.", "Gadgets, smart gear and everyday electronics at great prices."], "Clothing/Wearables": ["WEAR IT", "Look good. Feel ready.", "Clothing and wearables with a bit of attitude."], "Solar": ["POWERED BY THE SUN", "Free power, bright ideas.", "Solar lights, chargers and power banks for load shedding and the outdoors."], "Beauty and skincare": ["GLOW UP", "Your glow starts here.", "Skincare and beauty essentials for fresh, radiant skin."], "Perfumes": ["SIGNATURE SCENTS", "Find the fragrance that’s you.", "Yara, Romantic Soul, Xolleboss and Luenco. Pick your favourite scent."], "Motorcycle helmets": ["PROTECT YOUR RIDE", "Safety first, style always.", "Helmets for every rider."], "420 products": ["420 CORNER", "Your 420 essentials.", "Browse our 420 range. Adults only."], "Adult store": ["ADULTS ONLY", "Discreet. Private. Easy.", "Browse our adult range and order privately on WhatsApp."]};
+function applyTheme(c){var t=THEME[c];if(!t)return;document.body.dataset.cat=c;var h=document.querySelector(".hero-copy");if(h){h.querySelector(".eyebrow").textContent=t[0];h.querySelector("h1").textContent=t[1];h.querySelector("p").textContent=t[2]}var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=getComputedStyle(document.body).getPropertyValue("--green").trim()}
+applyTheme("Home appliances");
+</script>
+<script>
+(function(){var els=document.querySelectorAll(".section,.benefit,.about");if(!("IntersectionObserver" in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});els.forEach(function(el){el.classList.add("reveal");io.observe(el)})})();
 </script>
 </body>
 </html>
