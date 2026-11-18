@@ -114,6 +114,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     body .hero-inner{background:var(--hero)}.hero-inner::before{content:var(--deco);position:absolute;right:34px;top:50%;margin-top:-40px;font-size:60px;letter-spacing:14px;white-space:nowrap;animation:bob 4s ease-in-out infinite;pointer-events:none;opacity:.95}
     .tag{color:var(--green2)}.about{background:rgba(var(--rgb),.09)}.eyebrow{color:var(--gold)}
     @media(max-width:850px){.hero-inner::before{font-size:34px;right:16px;top:22px;margin-top:0;letter-spacing:8px;opacity:.4}}
+
+    .product{cursor:pointer}
+    .pm{position:fixed;inset:0;background:rgba(10,10,20,.62);display:none;align-items:center;justify-content:center;z-index:45;padding:16px}.pm.show{display:flex}
+    .pm-box{background:#fff;border-radius:20px;max-width:520px;width:100%;max-height:92vh;overflow:auto;position:relative;animation:rise .35s ease both;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+    .pm-box img{width:100%;max-height:340px;object-fit:contain;background:var(--cream);display:block;border-radius:20px 20px 0 0}
+    .pm-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .2s}.pm-x:hover{transform:rotate(90deg) scale(1.1)}
+    .pm-body{padding:18px 20px 22px}.pm-body h2{font-size:24px;margin:4px 0 8px}.pm-body p{color:#555;line-height:1.55;margin:0 0 14px}
+    .pm-price{font-size:26px;font-weight:bold;color:var(--green2);margin-bottom:14px}
+    .pm-btns{display:flex;gap:10px;flex-wrap:wrap}.pm-btns button{flex:1;min-width:140px;border:0;border-radius:26px;padding:13px 16px;font-size:14px;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s}.pm-btns button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(var(--rgb),.3)}
+    .pm-cart{background:var(--green);color:#fff}.pm-wa{background:#1e8d55;color:#fff}
   </style>
 </head>
 <body>
@@ -462,6 +472,28 @@ applyTheme("Home appliances");
 </script>
 <script>
 (function(){var els=document.querySelectorAll(".section,.benefit,.about");if(!("IntersectionObserver" in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});els.forEach(function(el){el.classList.add("reveal");io.observe(el)})})();
+</script>
+<script>
+(function(){
+  var m=document.createElement("div");m.className="pm";m.id="pm";
+  m.innerHTML='<div class="pm-box" role="dialog" aria-modal="true"><button class="pm-x" aria-label="Close" onclick="closeProduct()">✕</button><img id="pmImg" alt=""><div class="pm-body"><div class="tag" id="pmTag"></div><h2 id="pmName"></h2><p id="pmDesc"></p><div class="pm-price" id="pmPrice"></div><div class="pm-btns"><button class="pm-cart" id="pmCart">＋ Add to cart</button><button class="pm-wa" id="pmWa">Order on WhatsApp</button></div></div></div>';
+  document.body.appendChild(m);
+  m.addEventListener("click",function(e){if(e.target===m)closeProduct()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeProduct()});
+  document.getElementById("products").addEventListener("click",function(e){
+    if(e.target.closest(".add"))return;var a=e.target.closest(".product");if(a)openProduct(parseInt(a.id.slice(1),10));
+  });
+  window.openProduct=function(id){
+    var p=products.find(function(x){return x.id===id});if(!p)return;
+    var i=document.getElementById("pmImg");i.src=p.image;i.alt=p.name;i.style.display="";i.onerror=function(){i.style.display="none"};
+    document.getElementById("pmTag").textContent=p.tag||"";document.getElementById("pmName").textContent=p.name;
+    document.getElementById("pmDesc").textContent=p.desc||"";document.getElementById("pmPrice").textContent=money(p.price);
+    document.getElementById("pmCart").onclick=function(){closeProduct();addToCart(p.id)};
+    document.getElementById("pmWa").onclick=function(){sendWA("Hi! I would like to order: "+p.name+" ("+money(p.price)+")")};
+    m.classList.add("show");document.body.style.overflow="hidden";
+  };
+  window.closeProduct=function(){m.classList.remove("show");document.body.style.overflow=""};
+})();
 </script>
 </body>
 </html>
